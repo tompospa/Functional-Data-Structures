@@ -29,6 +29,8 @@ def enqueue_two(q, value):
         if delta_for_copy == 0:
             return QueueZero(n_head,n_tail,lendiff)
         else:
+            n_head = Element(head_reversed.value, n_head)
+            head_reversed = head_reversed.next
             #napojit prvek z head_reversed do n_head * 2 -> lendiff+2 #copy-2
             lendiff +=1
             delta_for_copy -=1
@@ -54,6 +56,8 @@ def dequeue_two(q):
         if delta_for_copy == 0:
             return q.head_origin.value, QueueZero(n_head,q.n_tail,lendiff)
         else:
+            n_head = Element(head_reversed.value, n_head)
+            head_reversed = head_reversed.next            
             #napojit prvek z head_reversed do n_head * 2 -> lendiff+2 #copy-2
             lendiff +=1
             delta_for_copy -=1

@@ -31,9 +31,13 @@ def enqueue_one(q, value):
     #copy
     for _ in range(2):
         if head is not None:
+            head_reversed = Element(head.value, head_reversed)
+            head = head.next
             #copy from head to head_reversed *2 -> #copy+2 
             delta_for_copy +=1
         if tail is not None:
+            n_head = Element(tail.value, n_head)
+            tail = tail.next
             #copy from tail to n_head *2 -> lendiff+2
             lendiff +=1
         if head is None and tail is None:
@@ -64,9 +68,13 @@ def dequeue_one(q):
 
     for _ in range(2):
         if head is not None:
+            head_reversed = Element(head.value, head_reversed)
+            head = head.next            
             #copy from head to head_reversed *2 -> #copy+2 
             delta_for_copy +=1
         if tail is not None:
+            n_head = Element(tail.value, n_head)
+            tail = tail.next            
             #copy from tail to n_head *2 -> lendiff+2
             lendiff +=1
         if head is None and tail is None:
