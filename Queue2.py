@@ -24,7 +24,7 @@ def enqueue_two(q, value):
     n_head = q.n_head
     delta_for_copy = q.delta_for_copy
 
-    #copy
+    
     for _ in range(2):
         if delta_for_copy == 0:
             return QueueZero(n_head,n_tail,lendiff)
