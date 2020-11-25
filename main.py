@@ -83,21 +83,21 @@ def head_is_empty(q):
 
 
 def make_random_queue():
-    head_size = random.randint(5, 15)
-    tail_size = random.randint(5, 15)
-    head = Element(random.randint(0, 50), None)
-    tail = Element(random.randint(0, 50), None)
-    head_2 = head
-    tail_2 = tail
+    number_of_operations = random.randint(5, 15)
+    operations = []
 
-    for x in range(head_size):
-        head_2.next = Element(random.randint(0, 50), None)
-        head_2 = head_2.next
-    for x in range(tail_size):
-        tail_2.next = Element(random.randint(0, 50), None)
-        tail_2 = tail_2.next
+    for x in range(number_of_operations):
+        operations.append(random.choice([True, False]))
 
-    return Queue(head, tail)
+    q = Queue(None,None)
+
+    for x in range(number_of_operations):
+        if operations[x]:
+            enqueue(q, random.randint(0,50))
+        else:
+            dequeue
+
+    return q
 
 
 def print_queue(q):
