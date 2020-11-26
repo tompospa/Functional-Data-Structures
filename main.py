@@ -95,7 +95,7 @@ def make_random_queue():
         if operations[x]:
             enqueue(q, random.randint(0,50))
         else:
-            dequeue
+            dequeue(q)
 
     return q
 

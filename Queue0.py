@@ -21,6 +21,8 @@ def enqueue_zero(q, value):
 
 
 def dequeue_zero(q):
+    if q.head is None:
+        pass
     if q.lendiff == 0:
         return dequeue_one(QueueOne(q.head, q.head, q.tail, None, None, None, 0, 0))
 
