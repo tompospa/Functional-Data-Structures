@@ -1,7 +1,7 @@
 
-from Element import *
+from Element import Element
 
-def q_0_print(q):
+def q_0_to_array(q):
     queue_arr = []
     head = q.head
     tail = reverse(q.tail)
@@ -21,7 +21,7 @@ def q_0_print(q):
     return queue_arr
 
 
-def q_1_print(q):
+def q_1_to_array(q):
     queue_arr = []
     head = q.head_origin
     tail = reverse(q.tail)
@@ -54,11 +54,37 @@ def q_1_print(q):
 
     return queue_arr    
 
-def q_2_print(q):
+def q_2_to_array(q):
     queue_arr = []
     head = q.head_origin
     n_head = q.n_head
     n_tail = reverse(q.n_tail)
+    pom = 0
+    
+    while True:
+        queue_arr.append(head)
+        pom +=1
+        if head.next is None:
+            break
+        head = head.next
+
+    pom = pom - q.delta_for_copy
+    while True:
+        if pom > 0:
+            pom -= 1
+            continue
+        queue_arr.append(n_head)
+        if n_head.next is None:
+            break
+        n_head = n_head.next        
+       
+    
+    while True:
+        queue_arr.append(n_tail)
+        if n_tail.next is None:
+            break
+        n_tail = n_tail.next      
+
     #slozitejsi prvni je head_origin pocitat kolik jsem prosel
     #odecist od toho q.#copy a ten pocet preskocit pri pridavani z n_head
     return queue_arr       

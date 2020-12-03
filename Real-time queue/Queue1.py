@@ -14,6 +14,7 @@ class QueueOne(object):
         self.n_tail = n_tail
         self.lendiff = lendiff
         self.delta_for_copy = delta_for_copy
+        self.state = 1
 
 
 

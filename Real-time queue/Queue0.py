@@ -2,6 +2,7 @@
 from Element import *
 from Queue1 import QueueOne, enqueue_one, dequeue_one
 
+empty_queue = None
 
 class QueueZero(object):
 
@@ -9,6 +10,7 @@ class QueueZero(object):
         self.head = head
         self.tail = tail
         self.lendiff = lendiff #  = |head| - |tail|
+        self.state = 0
 
 
 def enqueue_zero(q, value):
@@ -22,7 +24,7 @@ def enqueue_zero(q, value):
 
 def dequeue_zero(q):
     if q.head is None:
-        pass
+        return None, empty_queue
     if q.lendiff == 0:
         return dequeue_one(QueueOne(q.head, q.head, q.tail, None, None, None, 0, 0))
 

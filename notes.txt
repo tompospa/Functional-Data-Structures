@@ -1,0 +1,4 @@
+zmena v type() na porovnavani state
+
+pridani simplequeue varianty pro testovani
+

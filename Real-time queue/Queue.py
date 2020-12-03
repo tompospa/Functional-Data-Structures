@@ -1,22 +1,33 @@
-from Queue0 import QueueZero, enqueue_zero, dequeue_zero
-from Queue1 import QueueOne, enqueue_one, dequeue_one
-from Queue2 import QueueTwo, enqueue_two, dequeue_two
+from RealTimeQueue import QueueZero, enqueue_zero, dequeue_zero, QueueOne, enqueue_one, dequeue_one, QueueTwo, enqueue_two, dequeue_two
+from SimpleQueue import SimpleQueue,s_dequeue, s_enqueue
+import copy
 
 # todo prazdna queue
 
 def enqueue(q,value):
-    # misto typu podle promene tridy
-    if type(q) is QueueZero:
+    
+    q_c = copy.deepcopy(q)
+
+    if q_c.state == 0:
         return enqueue_zero(q,value)
-    if type(q) is QueueOne:
+    if q_c.state == 1:
         return enqueue_one(q,value)
-    if type(q) is QueueTwo:
-        return enqueue_two(q,value)        
+    if q_c.state == 2:
+        return enqueue_two(q,value)   
+    # pro testovani pridana varianta i pro SimpleQueue
+    if q_c.state == 3:
+        return s_enqueue(q_c, value)     
 
 def dequeue(q):
-    if type(q) is QueueZero:
+
+    q_c = copy.deepcopy(q)
+
+    if q.state == 0:
         return dequeue_zero(q)
-    if type(q) is QueueOne:
+    if q.state == 1:
         return dequeue_one(q)
-    if type(q) is QueueTwo:
-        return dequeue_two(q)      
+    if q.state == 2:
+        return dequeue_two(q)    
+    # pro testovani pridana varianta i pro SimpleQueue
+    if q_c.state == 3:
+        return s_dequeue(q_c)           
