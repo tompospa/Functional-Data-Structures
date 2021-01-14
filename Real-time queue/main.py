@@ -44,7 +44,7 @@ def enqueue(q, value):
 
 def dequeue(q):
     if queue_is_empty(q):
-        pass  # dodelat chyba nelze odebrat, fronta je prazdna
+        return None
     if head_is_empty(q):
         n_head = reverse(q.tail)
         n_queue = Queue(n_head.next, None)
