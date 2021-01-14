@@ -44,7 +44,7 @@ def enqueue(q, value):
 
 def dequeue(q):
     if queue_is_empty(q):
-        return None
+        return None#prazdna
     if head_is_empty(q):
         n_head = reverse(q.tail)
         n_queue = Queue(n_head.next, None)
