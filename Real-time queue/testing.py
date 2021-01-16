@@ -45,118 +45,98 @@ if __name__ == '__main__':
     #e = Element(5,None)
     #print(e)
 
-    q_simple = SimpleQueue()
-    
-    #print(q_simple.qlist)
-    q1 = enqueue(q_simple, 7)
-    q2 = enqueue(q1, 8)
-    q3 = enqueue(q2, 9)
-    q4 = enqueue(q3, 10)
-    print(q2)
-    print(q4)
-    print(q2.qlist)
-    print(q4.qlist)
-    k,l = dequeue(q4)
-    print(l.qlist)
-
-    print(q_simple.qlist)
 
     operations, values = make_random_operations_array(5,10)
     print("----------------------")
     b = QueueZero(None, None, 0)
+    
     b = enqueue(b , 8)
     print(type(b))
+    #print(q_2_to_array(b))
     print(b)
+
     b = enqueue(b , 7)
     print(type(b))
-    print(b)    
+    
+    print(b)
+
     b = enqueue(b , 6)
     print(type(b))
-    print(b)
-    b = enqueue(b , 5)   
-    print(type(b))
+    
     print(b)
 
+    b = enqueue(b , 5)
+    print(type(b))
+    
+    print(b)    
+
+    b = enqueue(b , 4)
+    print(type(b))
+    
+    print(b)       
     print(q_0_to_array(b))
 
-    odebrany, b = dequeue(b)
-    #print(q_0_to_array(b))
+
+    pom, b = dequeue(b)
     print(type(b))
-    print(b)
-    print(q_2_to_array(b))
-
-    b = enqueue(b , 5)   
+    
+    print(b)    
+    print(q_0_to_array(b))
+    
+    pom, b = dequeue(b)
     print(type(b))
-    print(b)
-    print(q_0_to_array(b))    
-
-    print("*************************")
-    operations, values = make_random_operations_array(5,10)
-    print(operations)
-    print(values)
-
-    q_simple = SimpleQueue()
     
-    q = QueueZero(None, None, 0)
+    print(b)  
+    print(q_1_to_array(b)) 
 
-    do_operations_on_queue(operations, q_simple, values)   # operations and values on simple q
+    pom, b = dequeue(b)
+    print(type(b))
     
-    print("simple q is {}".format(q_simple.qlist))
-    do_operations_on_queue(operations, q, values) # same operations and values on my q
+    print(b)      
 
-    print(q)
-    print(type(q))
-    a = None
-    if q.state == 0:
-        a = q_0_to_array(q)
-    if q.state == 1:
-        a = q_1_to_array(q)
-    if q.state == 2:
-        a = q_2_to_array(q)    
-    print(a)        
+    pom, b = dequeue(b)
+    print(type(b))
+    
+    print(b)    
 
+
+    pom, b = dequeue(b)
+    print(type(b))
+    
+    print(b)        
+
+
+    pom, b = dequeue(b)
+    print(type(b))
+    
+    print(b)    
 
     
-
-    '''
-    p1 = 0 
-    p2 = 0
-    for x in operations:
-        if x:
-            p1 +=1
-        else:
-            p2 +=1
-    
-    print("operace jsou: {0}".format(operations))
-    print("hodnoty jsou: {0}".format(values))
-    #print("pridavani "+str(p1))
-    #print("odebirani "+str(p2))
-    
-    q_simple = do_operations_on_queue(operations, q_simple, values)
-
-    #print(q_simple.qlist)
-
-    b = QueueZero(None, None, 0)
-    b1 = enqueue(b , 8)
-    b2 = enqueue(b1 , 9)
-    b3 = enqueue(b2 , 10)
-    b4 = enqueue(b3 , 11)
-
-    print(b3) 
-
-    #q_2_to_array(b1)
-
-    #print(q_2_to_array(b1))
-    '''
-
-    '''q = QueueZero(None, None, 0)
 
     operations, values = make_random_operations_array(10,100)
-    
-    do_operations_on_queue(operations, q_simple, values)   # operations and values on simple q
-    do_operations_on_queue(operations, q, values) # same operations and values on my q
 
-    compare_queues(q_simple, q)'''
+    b = do_operations_on_queue(operations, b, values)
+
+    s = SimpleQueue()
+
+    s = do_operations_on_queue(operations, s, values)
+
+    
+    if b.state == 0:
+        print(q_0_to_array(b))
+    if b.state == 1:
+        print(q_1_to_array(b))
+
+    if b.state == 2:
+        print(q_2_to_array(b))
+
+
+    
+
+    print(s.qlist)
+
+    
+
 
 
 

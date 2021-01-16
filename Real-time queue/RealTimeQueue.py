@@ -20,11 +20,12 @@ empty_queue = QueueZero(None,None,0)
 
 def enqueue_zero(q, value):
     print("enque zero: "+str(value))
-    if q.head is None and q.tail is None:
-        return QueueZero(Element(value, None), q.tail, 1)
+    #if q.head is None and q.tail is None:
+        #return QueueZero(Element(value, None), q.tail, 1)
 
     if q.lendiff == 0:
-        return enqueue_one(QueueOne(q.head, copy.deepcopy(q.head), q.tail, None, None, None, 0, 0), value)
+        print("yes")
+        return enqueue_one(QueueOne(q.head, q.head, q.tail, None, None, None, 0, 0),value)
 
     n_tail = Element(value, q.tail)
     q.lendiff -= 1
@@ -65,6 +66,25 @@ class QueueOne(object):
 
 def enqueue_one(q, value):
     print("enque one: "+str(value))
+
+    if q.lendiff == 0:
+        n_head = Element(value, None)
+
+        head_reversed = None
+        delta_for_copy = 0
+        head = None
+        if q.head is not None:
+            head_reversed = Element(q.head.value, None)
+            head = q.head.next
+            delta_for_copy = 1
+
+        if head is None and q.tail is None:
+            return QueueZero(n_head,None,1)
+            #print("wtf")
+            #return QueueTwo(q.head_origin, head_reversed, n_head, None, 1, delta_for_copy)
+
+        return QueueOne(q.head_origin, head, q.tail, head_reversed, n_head, None, 1, delta_for_copy)
+
     n_tail = Element(value, q.n_tail)
     lendiff = q.lendiff-1
     
@@ -103,6 +123,33 @@ def enqueue_one(q, value):
 
 def dequeue_one(q):
 
+    if q.lendiff == 0:
+        
+        #q.head_origin.value#vracet
+        head_origin = q.head_origin.next
+
+        if head_origin == None and q.tail == None:
+            return q.head_origin.value, empty_queue
+        
+        lendiff = 0
+        head = None
+        tail = None
+        if q.head.next is not None:
+            head_reversed = Element(q.head.next.value, None)
+            head = q.head.next.next            
+
+            delta_for_copy = 1
+        if q.tail is not None:
+            n_head = Element(q.tail.value, None)
+            tail = q.tail.next            
+
+            lendiff +=1
+        if head is None and tail is None:
+            return q.head_origin.value, QueueZero(n_head, None, 1)
+
+        return q.head_origin.value, QueueOne(head_origin, head, tail, head_reversed, n_head, None, lendiff, delta_for_copy)
+
+
     head_origin = q.head_origin.next
     delta_for_copy = q.delta_for_copy-1
     
@@ -112,6 +159,7 @@ def dequeue_one(q):
     head_reversed = q.head_reversed
     n_head = q.n_head
     lendiff = q.lendiff
+
 
     for _ in range(2):
         if head is not None:
@@ -181,6 +229,10 @@ def enqueue_two(q, value):
 
 
 def dequeue_two(q):
+
+    if q.delta_for_copy == 0:
+        return dequeue_zero(QueueZero(q.n_head,q.n_tail,q.lendiff))
+
 
     head_origin = q.head_origin.next
     delta_for_copy = q.delta_for_copy-1

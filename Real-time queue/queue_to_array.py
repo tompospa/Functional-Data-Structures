@@ -14,6 +14,7 @@ def q_0_to_array(q):
             break
         head = head.next
 
+    #queue_arr.append(" | ")
     while True:
         if tail is None:
             break
@@ -35,7 +36,7 @@ def q_1_to_array(q):
     while True:
         if head is None:
             break
-        queue_arr.append(head)
+        queue_arr.append(head.value)
         if head.next is None:
             break
         head = head.next
@@ -43,7 +44,7 @@ def q_1_to_array(q):
     while True:
         if tail is None:
             break
-        queue_arr.append(tail)
+        queue_arr.append(tail.value)
         if tail.next is None:
             break
         tail = tail.next    
@@ -51,7 +52,7 @@ def q_1_to_array(q):
     while True:
         if n_head is None:
             break
-        queue_arr.append(n_head)
+        queue_arr.append(n_head.value)
         if n_head.next is None:
             break
         n_head = n_head.next    
@@ -59,34 +60,30 @@ def q_1_to_array(q):
     while True:
         if n_tail is None:
             break
-        queue_arr.append(n_tail)
+        queue_arr.append(n_tail.value)
         if n_tail.next is None:
             break
         n_tail = n_tail.next                
 
     return queue_arr    
 
-def q_2_to_array(q):
+def q_2_to_array(q):#
     queue_arr = []
     head = q.head_origin
     n_head = q.n_head
     n_tail = reverse(q.n_tail)
-    pom = 0
     
-    while True:
+    
+    for x in range(q.delta_for_copy):
         if head is None:
             break
         queue_arr.append(head.value)
-        pom +=1
         if head.next is None:
             break
         head = head.next
 
-    pom = pom - q.delta_for_copy
+    
     while True:
-        if pom > 0:
-            pom -= 1
-            continue
         if n_head is None:
             break
         queue_arr.append(n_head.value)
@@ -98,13 +95,13 @@ def q_2_to_array(q):
     while True:
         if n_tail is None:
             break
-        queue_arr.append(n_tail)
+        queue_arr.append(n_tail.value)
         if n_tail.next is None:
             break
         n_tail = n_tail.next      
 
-    #slozitejsi prvni je head_origin pocitat kolik jsem prosel
-    #odecist od toho q.#copy a ten pocet preskocit pri pridavani z n_head
+    #z head_origin vzit #copy prvku pakvsechny z n_head a vsechy y reverse n_tail
+
     return queue_arr       
 
 
