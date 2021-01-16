@@ -10,7 +10,7 @@ def s_enqueue(q, value):
     n_q = SimpleQueue()
     n_q.qlist = q.qlist
     n_q.qlist.append(value)
-    print("pridavam {0}".format(value))
+    print("simplequeue pridavam {0}".format(value))
     return n_q
 
 def s_dequeue(q):
@@ -21,7 +21,7 @@ def s_dequeue(q):
     q.qlist.pop(0)
     n_q = SimpleQueue()
     n_q.qlist = q.qlist
-    print("odebiram {0}".format(value))
+    print("simplequeue odebiram {0}".format(value))
     return value, n_q
 
 """

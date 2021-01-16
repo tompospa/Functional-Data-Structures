@@ -6,21 +6,21 @@ import copy
 
 def enqueue(q,value):
     
-    q_c = copy.deepcopy(q)
+    #q_c = copy.deepcopy(q)
 
-    if q_c.state == 0:
+    if q.state == 0:
         return enqueue_zero(q,value)
-    if q_c.state == 1:
+    if q.state == 1:
         return enqueue_one(q,value)
-    if q_c.state == 2:
+    if q.state == 2:
         return enqueue_two(q,value)   
     # pro testovani pridana varianta i pro SimpleQueue
-    if q_c.state == 3:
-        return s_enqueue(q_c, value)     
+    if q.state == 3:
+        return s_enqueue(q, value)     
 
 def dequeue(q):
 
-    q_c = copy.deepcopy(q)
+    #q_c = copy.deepcopy(q)
 
     if q.state == 0:
         return dequeue_zero(q)
@@ -29,5 +29,5 @@ def dequeue(q):
     if q.state == 2:
         return dequeue_two(q)    
     # pro testovani pridana varianta i pro SimpleQueue
-    if q_c.state == 3:
-        return s_dequeue(q_c)           
+    if q.state == 3:
+        return s_dequeue(q)           

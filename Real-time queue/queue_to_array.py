@@ -7,13 +7,17 @@ def q_0_to_array(q):
     tail = reverse(q.tail)
 
     while True:
-        queue_arr.append(head)
+        if head is None:
+            break
+        queue_arr.append(head.value)
         if head.next is None:
             break
         head = head.next
 
     while True:
-        queue_arr.append(tail)
+        if tail is None:
+            break
+        queue_arr.append(tail.value)
         if tail.next is None:
             break
         tail = tail.next    
@@ -29,24 +33,32 @@ def q_1_to_array(q):
     n_tail = reverse(q.n_tail)
 
     while True:
+        if head is None:
+            break
         queue_arr.append(head)
         if head.next is None:
             break
         head = head.next
 
     while True:
+        if tail is None:
+            break
         queue_arr.append(tail)
         if tail.next is None:
             break
         tail = tail.next    
 
     while True:
+        if n_head is None:
+            break
         queue_arr.append(n_head)
         if n_head.next is None:
             break
         n_head = n_head.next    
 
     while True:
+        if n_tail is None:
+            break
         queue_arr.append(n_tail)
         if n_tail.next is None:
             break
@@ -62,7 +74,9 @@ def q_2_to_array(q):
     pom = 0
     
     while True:
-        queue_arr.append(head)
+        if head is None:
+            break
+        queue_arr.append(head.value)
         pom +=1
         if head.next is None:
             break
@@ -73,13 +87,17 @@ def q_2_to_array(q):
         if pom > 0:
             pom -= 1
             continue
-        queue_arr.append(n_head)
+        if n_head is None:
+            break
+        queue_arr.append(n_head.value)
         if n_head.next is None:
             break
         n_head = n_head.next        
        
     
     while True:
+        if n_tail is None:
+            break
         queue_arr.append(n_tail)
         if n_tail.next is None:
             break

@@ -6,6 +6,7 @@ from SimpleQueue import SimpleQueue
 from RealTimeQueue import QueueZero, enqueue_zero, dequeue_zero, QueueOne, enqueue_one, dequeue_one, QueueTwo, enqueue_two, dequeue_two
 import random
 from queue_to_array import *
+import copy
 
 
 def make_random_operations_array(min, max):
@@ -22,8 +23,9 @@ def make_random_operations_array(min, max):
 
     return operations, values
 
-def do_operations_on_queue(operations, q, values):
+def do_operations_on_queue(operations, q, values_o):
     
+    values = copy.deepcopy(values_o)
     n_q = q
     for x in operations: # predelat na for element
         if x:
@@ -50,6 +52,8 @@ if __name__ == '__main__':
     q2 = enqueue(q1, 8)
     q3 = enqueue(q2, 9)
     q4 = enqueue(q3, 10)
+    print(q2)
+    print(q4)
     print(q2.qlist)
     print(q4.qlist)
     k,l = dequeue(q4)
@@ -58,7 +62,63 @@ if __name__ == '__main__':
     print(q_simple.qlist)
 
     operations, values = make_random_operations_array(5,10)
+    print("----------------------")
+    b = QueueZero(None, None, 0)
+    b = enqueue(b , 8)
+    print(type(b))
+    print(b)
+    b = enqueue(b , 7)
+    print(type(b))
+    print(b)    
+    b = enqueue(b , 6)
+    print(type(b))
+    print(b)
+    b = enqueue(b , 5)   
+    print(type(b))
+    print(b)
 
+    print(q_0_to_array(b))
+
+    odebrany, b = dequeue(b)
+    #print(q_0_to_array(b))
+    print(type(b))
+    print(b)
+    print(q_2_to_array(b))
+
+    b = enqueue(b , 5)   
+    print(type(b))
+    print(b)
+    print(q_0_to_array(b))    
+
+    print("*************************")
+    operations, values = make_random_operations_array(5,10)
+    print(operations)
+    print(values)
+
+    q_simple = SimpleQueue()
+    
+    q = QueueZero(None, None, 0)
+
+    do_operations_on_queue(operations, q_simple, values)   # operations and values on simple q
+    
+    print("simple q is {}".format(q_simple.qlist))
+    do_operations_on_queue(operations, q, values) # same operations and values on my q
+
+    print(q)
+    print(type(q))
+    a = None
+    if q.state == 0:
+        a = q_0_to_array(q)
+    if q.state == 1:
+        a = q_1_to_array(q)
+    if q.state == 2:
+        a = q_2_to_array(q)    
+    print(a)        
+
+
+    
+
+    '''
     p1 = 0 
     p2 = 0
     for x in operations:
@@ -87,7 +147,7 @@ if __name__ == '__main__':
     #q_2_to_array(b1)
 
     #print(q_2_to_array(b1))
-
+    '''
 
     '''q = QueueZero(None, None, 0)
 

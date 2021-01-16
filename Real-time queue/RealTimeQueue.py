@@ -1,8 +1,8 @@
 
 from Element import *
-from copy import copy
+import copy
 
-empty_queue = None
+
 
 class QueueZero(object):
 
@@ -12,13 +12,19 @@ class QueueZero(object):
         self.lendiff = lendiff #  = |head| - |tail|
         self.state = 0
 
+    def __str__(self):
+    
+        return "head: {}  tail: {} lendiff: {}".format(self.head,self.tail,self.lendiff)       
+
+empty_queue = QueueZero(None,None,0)
 
 def enqueue_zero(q, value):
+    print("enque zero: "+str(value))
     if q.head is None and q.tail is None:
         return QueueZero(Element(value, None), q.tail, 1)
 
     if q.lendiff == 0:
-        return enqueue_one(QueueOne(q.head, q.head, q.tail, None, None, None, 0, 0), value)
+        return enqueue_one(QueueOne(q.head, copy.deepcopy(q.head), q.tail, None, None, None, 0, 0), value)
 
     n_tail = Element(value, q.tail)
     q.lendiff -= 1
@@ -51,9 +57,14 @@ class QueueOne(object):
         self.delta_for_copy = delta_for_copy
         self.state = 1
 
+    def __str__(self):
+    
+        return "head_origin: {}  head {} tail {} head_reversed: {} n_head: {} n_tail: {} lendiff: {} delta_for_copy: {}".format(self.head_origin,self.head,self.tail,self.head_reversed,self.n_head,self.n_tail,self.lendiff,self.delta_for_copy)           
+
 
 
 def enqueue_one(q, value):
+    print("enque one: "+str(value))
     n_tail = Element(value, q.n_tail)
     lendiff = q.lendiff-1
     
@@ -139,11 +150,11 @@ class QueueTwo(object):
 
     def __str__(self):
 
-        return "{} {} {}".format(self.head_origin, self.n_tail, self.n_tail.next)    
+        return "head_origin: {}  head_reversed: {} n_head: {} n_tail: {} lendiff: {} delta_for_copy: {}".format(self.head_origin,self.head_reversed,self.n_head,self.n_tail,self.lendiff,self.delta_for_copy)    
     
 
 def enqueue_two(q, value):
-
+    print("enque two: "+str(value))
     n_tail = Element(value, q.n_tail)
     lendiff = q.lendiff-1
     
