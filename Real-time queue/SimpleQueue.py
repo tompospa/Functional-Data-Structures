@@ -10,18 +10,18 @@ def s_enqueue(q, value):
     n_q = SimpleQueue()
     n_q.qlist = q.qlist
     n_q.qlist.append(value)
-    print("simplequeue pridavam {0}".format(value))
+    #print("simplequeue pridavam {0}".format(value))
     return n_q
 
 def s_dequeue(q):
     if not q.qlist:
-        print("fronta prazdna nic nleze odebrat")
-        return 0, q #pro testovani 
+        #print("fronta prazdna nic nleze odebrat")
+        return None, q #pro testovani 
     value = q.qlist[0]
     q.qlist.pop(0)
     n_q = SimpleQueue()
     n_q.qlist = q.qlist
-    print("simplequeue odebiram {0}".format(value))
+    #print("simplequeue odebiram {0}".format(value))
     return value, n_q
 
 """

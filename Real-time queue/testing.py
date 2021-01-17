@@ -27,7 +27,7 @@ def do_operations_on_queue(operations, q, values_o):
     
     values = copy.deepcopy(values_o)
     n_q = q
-    for x in operations: # predelat na for element
+    for x in operations:
         if x:
             n_q = enqueue(n_q, values[0])
             values.pop(0)
@@ -35,83 +35,43 @@ def do_operations_on_queue(operations, q, values_o):
             v, n_q = dequeue(n_q)
     return n_q
 
-def compare_queues(q_1, q_2):
+def check_realtimeQ(real_time_queue, simple_queue, number_of_operation_for_testing):
+    
+    number_of_operations = number_of_operation_for_testing
+    operations = []
+    values = []
 
+    #vytvoření pole operací a pole prvků pro přídání
+    for _ in range(number_of_operations):
+        choice = random.choice([True, False])
+        operations.append(choice)
+        if choice:
+            values.append(random.randint(0,50))    
 
-    pass # udelat z queues Array a porovnat Arrays    
+    #samotné testování
+    for x in operations:
+        if x:
+            real_time_queue = enqueue(real_time_queue, values[0])
+            simple_queue = enqueue(simple_queue, values[0])
+            values.pop(0)
+        else:
+            v1, real_time_queue = dequeue(real_time_queue)
+            v2, simple_queue = dequeue(simple_queue)
+            if v1 != v2:
+                return False
+
+    return True
+
+ 
 
 if __name__ == '__main__':
-    # udelat samostatne funce
-    #e = Element(5,None)
-    #print(e)
+
+    print(check_realtimeQ( get_empty_queue() , SimpleQueue(), 10000) ) #vstupy jsou prázdné fronty jedna Realtimequeue a druhí Simplequeue a poslední argument je počet operací, které budou nad frontou provedeny
 
 
-    operations, values = make_random_operations_array(5,10)
-    print("----------------------")
+    #testování queue přes rovnost každáho prvku
+    '''
     b = QueueZero(None, None, 0)
-    
-    b = enqueue(b , 8)
-    print(type(b))
-    #print(q_2_to_array(b))
-    print(b)
-
-    b = enqueue(b , 7)
-    print(type(b))
-    
-    print(b)
-
-    b = enqueue(b , 6)
-    print(type(b))
-    
-    print(b)
-
-    b = enqueue(b , 5)
-    print(type(b))
-    
-    print(b)    
-
-    b = enqueue(b , 4)
-    print(type(b))
-    
-    print(b)       
-    print(q_0_to_array(b))
-
-
-    pom, b = dequeue(b)
-    print(type(b))
-    
-    print(b)    
-    print(q_0_to_array(b))
-    
-    pom, b = dequeue(b)
-    print(type(b))
-    
-    print(b)  
-    print(q_1_to_array(b)) 
-
-    pom, b = dequeue(b)
-    print(type(b))
-    
-    print(b)      
-
-    pom, b = dequeue(b)
-    print(type(b))
-    
-    print(b)    
-
-
-    pom, b = dequeue(b)
-    print(type(b))
-    
-    print(b)        
-
-
-    pom, b = dequeue(b)
-    print(type(b))
-    
-    print(b)    
-
-    
 
     operations, values = make_random_operations_array(10,100)
 
@@ -120,7 +80,6 @@ if __name__ == '__main__':
     s = SimpleQueue()
 
     s = do_operations_on_queue(operations, s, values)
-
     
     if b.state == 0:
         print(q_0_to_array(b))
@@ -130,10 +89,8 @@ if __name__ == '__main__':
     if b.state == 2:
         print(q_2_to_array(b))
 
-
-    
-
     print(s.qlist)
+    '''
 
     
 

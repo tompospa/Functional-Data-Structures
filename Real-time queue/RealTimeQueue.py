@@ -19,12 +19,11 @@ class QueueZero(object):
 empty_queue = QueueZero(None,None,0)
 
 def enqueue_zero(q, value):
-    print("enque zero: "+str(value))
+    #print("enque zero: "+str(value))
     #if q.head is None and q.tail is None:
         #return QueueZero(Element(value, None), q.tail, 1)
 
     if q.lendiff == 0:
-        print("yes")
         return enqueue_one(QueueOne(q.head, q.head, q.tail, None, None, None, 0, 0),value)
 
     n_tail = Element(value, q.tail)
@@ -65,7 +64,7 @@ class QueueOne(object):
 
 
 def enqueue_one(q, value):
-    print("enque one: "+str(value))
+    #print("enque one: "+str(value))
 
     if q.lendiff == 0:
         n_head = Element(value, None)
@@ -202,7 +201,7 @@ class QueueTwo(object):
     
 
 def enqueue_two(q, value):
-    print("enque two: "+str(value))
+    #print("enque two: "+str(value))
     n_tail = Element(value, q.n_tail)
     lendiff = q.lendiff-1
     

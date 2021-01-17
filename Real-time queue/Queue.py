@@ -2,7 +2,6 @@ from RealTimeQueue import QueueZero, enqueue_zero, dequeue_zero, QueueOne, enque
 from SimpleQueue import SimpleQueue,s_dequeue, s_enqueue
 import copy
 
-# todo prazdna queue
 
 def enqueue(q,value):
     
@@ -31,3 +30,8 @@ def dequeue(q):
     # pro testovani pridana varianta i pro SimpleQueue
     if q.state == 3:
         return s_dequeue(q)           
+
+
+def get_empty_queue:
+    
+    return QueueZero(None,None,0)
