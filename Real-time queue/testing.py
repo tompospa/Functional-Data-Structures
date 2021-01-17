@@ -1,7 +1,7 @@
 
 
 from Element import Element
-from Queue import enqueue, dequeue
+from Queue import enqueue, dequeue, get_empty_queue
 from SimpleQueue import SimpleQueue
 from RealTimeQueue import QueueZero, enqueue_zero, dequeue_zero, QueueOne, enqueue_one, dequeue_one, QueueTwo, enqueue_two, dequeue_two
 import random

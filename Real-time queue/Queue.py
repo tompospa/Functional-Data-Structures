@@ -32,6 +32,6 @@ def dequeue(q):
         return s_dequeue(q)           
 
 
-def get_empty_queue:
+def get_empty_queue():
     
     return QueueZero(None,None,0)
