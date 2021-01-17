@@ -19,9 +19,6 @@ class QueueZero(object):
 empty_queue = QueueZero(None,None,0)
 
 def enqueue_zero(q, value):
-    #print("enque zero: "+str(value))
-    #if q.head is None and q.tail is None:
-        #return QueueZero(Element(value, None), q.tail, 1)
 
     if q.lendiff == 0:
         return enqueue_one(QueueOne(q.head, q.head, q.tail, None, None, None, 0, 0),value)
@@ -32,6 +29,7 @@ def enqueue_zero(q, value):
 
 
 def dequeue_zero(q):
+
     if q.head is None:
         return None, empty_queue
     if q.lendiff == 0:
@@ -64,8 +62,8 @@ class QueueOne(object):
 
 
 def enqueue_one(q, value):
-    #print("enque one: "+str(value))
 
+    # přechod ze stavu 0 do stavu 1
     if q.lendiff == 0:
         n_head = Element(value, None)
 
@@ -79,8 +77,7 @@ def enqueue_one(q, value):
 
         if head is None and q.tail is None:
             return QueueZero(n_head,None,1)
-            #print("wtf")
-            #return QueueTwo(q.head_origin, head_reversed, n_head, None, 1, delta_for_copy)
+
 
         return QueueOne(q.head_origin, head, q.tail, head_reversed, n_head, None, 1, delta_for_copy)
 
@@ -122,6 +119,7 @@ def enqueue_one(q, value):
 
 def dequeue_one(q):
 
+    # přechod ze stavu 0 do stavu 1
     if q.lendiff == 0:
         
         #q.head_origin.value#vracet
@@ -229,6 +227,8 @@ def enqueue_two(q, value):
 
 def dequeue_two(q):
 
+    # bug, který může nastat když queue je ve stavu nula, např. head= 1 -> 2 tail= 3 <- 4, chci odebrat tzn. prvek 1 se odebere a queue zustava ve stavu jedna(tail není celý přetočený),
+    # poté chci znovu odebrat odebere se prvek 2 a queue přejde do stavu dva , ale head_origin je prázdný tzn. nelze odkud odebrat  
     if q.delta_for_copy == 0:
         return dequeue_zero(QueueZero(q.n_head,q.n_tail,q.lendiff))
 

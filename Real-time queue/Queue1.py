@@ -17,7 +17,6 @@ class QueueOne(object):
         self.state = 1
 
 
-
 def enqueue_one(q, value):
     n_tail = Element(value, q.n_tail)
     lendiff = q.lendiff-1
