@@ -1,17 +1,15 @@
-class deque(object):
+
+def new():
     pass
 
-    def new():
-        pass
+def is_empty():
+    pass
 
-    def is_empty():
-        pass
+def push(v, dq):
+    pass
 
-    def push(v, dq):
-        pass
+def pop(dq):
+    pass
 
-    def pop(dq):
-        pass
-
-    def length(dq):
-        pass
+def length(dq):
+    pass
