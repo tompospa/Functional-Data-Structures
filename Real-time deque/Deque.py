@@ -1,1 +1,2 @@
-class deque
+class deque(object):
+    pass
