@@ -1,6 +1,6 @@
 from RealTimeDeque import Deque_0, Deque_1
 from Element import Element
-from Stack import Stack
+from Stack import Stack, stack_to_array
 
 def push_left(value, dq):
     if dq.state == 0:
@@ -114,11 +114,12 @@ def push_left_1(value, dq):
     # přidání prvku do levého stacku a zvětšení délky levého stacku
 
     # invariant 3*|S| >= |B|
-    if (3*n_length) < dq.RHS_length or (3*dq.RHS_length) < dq.n_length:
+    if (3*n_length) < dq.RHS_length or (3*dq.RHS_length) < n_length:
         # prechod do 2 
+        print("prechod 2")
         pass
 
-    return deque_1(n_LHS, dq.RHS, n_length, dq.RHS_length)
+    return Deque_1(n_LHS, dq.RHS, n_length, dq.RHS_length)
 
 def push_right_1(value, dq):
     
@@ -127,9 +128,49 @@ def push_right_1(value, dq):
     # přidání prvku do pravého stacku a zvětšení délky pravého stacku
 
     # invariant 3*|S| >= |B|
-    if (3*n_length) < dq.LHS_length or (3*dq.LHS_length) < dq.n_length:
+    if (3*n_length) < dq.LHS_length or (3*dq.LHS_length) < n_length:
         # prechod do 2 
+        print("prechod 2")
         pass
 
-    return deque_1(dq.LHS, n_RHS, dq.LHS_length, n_length)
+    return Deque_1(dq.LHS, n_RHS, dq.LHS_length, n_length)
+
+def pop_left_1(dq):
+    
+    value = dq.LHS.get().value
+    n_LHS = dq.LHS.next()
+    n_length = dq.LHS_length - 1
+    
+    # invariant 3*|S| >= |B|
+    if (3*n_length) < dq.RHS_length or (3*dq.RHS_length) < n_length:
+        # prechod do 2 
+        print("prechod 2")
+        pass    
+
+    if n_length == 0:
+        # prechod do 0
+        arr = stack_to_array(dq.RHS)
+        arr = arr[::-1]
+        return value, Deque_0(arr)
+
+    return value, Deque_1(n_LHS, dq.RHS, n_length, dq.RHS_length)
+
+
+def pop_right_1(dq):
+    
+    value = dq.RHS.get().value
+    n_RHS = dq.RHS.next()
+    n_length = dq.RHS_length - 1
+
+    # invariant 3*|S| >= |B|
+    if (3*n_length) < dq.LHS_length or (3*dq.LHS_length) < n_length:
+        # prechod do 2 
+        print("prechod 2")
+        pass
+
+    if n_length == 0:
+        # prechod do 0
+        return value, Deque_0(stack_to_array(dq.LHS))    
+
+    return value, Deque_1(dq.LHS, n_RHS, dq.LHS_length, n_length)    
 #---------------------------------------------------------------------

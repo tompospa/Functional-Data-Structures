@@ -12,13 +12,25 @@ class Stack(object):
         if self.first is None:
             return self.second
         return self.first
+
         
     def next(self):
         if self.first is None:
             if self.second is None:
                 print("stack je prazdny next nedava smysl")
                 return None
-            return self.second.next
+            return Stack(None, self.second.next)
         if self.first.next is None:
-            return self.second
-        return self.first.next
+            return Stack(None, self.second)
+        return Stack(self.first.next, self.second)
+
+def stack_to_array(stack):
+
+    arr = []
+    
+    while stack.get() is not None:
+        arr.append(stack.get().value)
+        stack = stack.next()
+        
+    return arr
+
