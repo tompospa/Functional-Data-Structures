@@ -6,7 +6,7 @@ class Deque_0(object):
         self.state = 0
 
     def __str__(self):
-        return "list: {} state: {}".format(self.list, self.state)
+        return "{} state: {}".format(self.list, self.state)
 
 
 class Deque_1(object):
@@ -21,7 +21,29 @@ class Deque_1(object):
         self.state = 1
 
     def __str__(self):
-        return "LHS: {} RHS: {} LHS_length: {} RHS_length: {} state: {}".format(self.LHS, self.RHS, self.LHS_length, self.RHS_length, self.state)
+        arr = []
+        LHS = self.LHS
+        while True:
+            if LHS.get() is None:
+                break
+            arr.append(LHS.get().value)
+            LHS = LHS.next()
+
+        arr2 = []
+        RHS = self.RHS
+        while True:
+            if RHS.get() is None:
+                break
+            arr2.append(RHS.get().value)
+            RHS = RHS.next()
+
+        arr2 = arr2[::-1]
+        arr3 = arr + arr2
+
+        return "{} state: {}".format(arr3, self.state)
+
+
+        #return "LHS: {} RHS: {} LHS_length: {} RHS_length: {} state: {}".format(self.LHS, self.RHS, self.LHS_length, self.RHS_length, self.state)
 
 class Deque_2(object):
 
@@ -44,7 +66,90 @@ class Deque_2(object):
         
 
         self.state = 2
-        
+
+    def __str__(self):
+
+        if self.side:
+            arr1 = []
+            extra_S = self.extra_S
+            while True:
+                if extra_S is None:
+                    break
+                arr1.append(extra_S.value)
+                extra_S = extra_S.next    
+
+            arr2 = []
+            S = self.S_origin
+            while True:
+                if S.get() is None:
+                    break
+                arr2.append(S.get().value)
+                S = S.next()             
+
+
+            arr3 = []
+            B = self.B_origin
+            while True:
+                if B.get() is None:
+                    break
+                arr3.append(B.get().value)
+                B = B.next() 
+            arr3 = arr3[::-1]
+
+            arr4 = []
+            extra_B = self.extra_B
+            while True:
+                if extra_B is None:
+                    break
+                arr4.append(extra_B.value)
+                extra_B = extra_B.next      
+            arr4 = arr4[::-1]         
+
+            arr = arr1 + arr2 + arr3 + arr4
+
+        else:
+            arr1 = []
+            extra_S = self.extra_S
+            while True:
+                if extra_S is None:
+                    break
+                arr1.append(extra_S.value)
+                extra_S = extra_S.next    
+            arr1 = arr1[::-1]
+
+            arr2 = []
+            S = self.S_origin
+            while True:
+                if S.get() is None:
+                    break
+                arr2.append(S.get().value)
+                S = S.next()             
+            arr2 = arr2[::-1]
+
+            arr3 = []
+            B = self.B_origin
+            while True:
+                if B.get() is None:
+                    break
+                arr3.append(B.get().value)
+                B = B.next() 
+
+
+            arr4 = []
+            extra_B = self.extra_B
+            while True:
+                if extra_B is None:
+                    break
+                arr4.append(extra_B.value)
+                extra_B = extra_B.next      
+      
+
+            arr = arr4 + arr3 + arr2 + arr1
+
+        return "{} state: {}".format(arr, self.state)
+
+                                      
+            
 
 class Deque_3(object):
     
@@ -69,3 +174,84 @@ class Deque_3(object):
         
         
         self.state = 3
+
+    def __str__(self):
+    
+        if self.side:
+            arr1 = []
+            extra_S = self.extra_S
+            while True:
+                if extra_S is None:
+                    break
+                arr1.append(extra_S.value)
+                extra_S = extra_S.next    
+
+            arr2 = []
+            S = self.S_origin
+            while True:
+                if S.get() is None:
+                    break
+                arr2.append(S.get().value)
+                S = S.next()             
+
+
+            arr3 = []
+            B = self.B_origin
+            while True:
+                if B.get() is None:
+                    break
+                arr3.append(B.get().value)
+                B = B.next() 
+            arr3 = arr3[::-1]
+
+            arr4 = []
+            extra_B = self.extra_B
+            while True:
+                if extra_B is None:
+                    break
+                arr4.append(extra_B.value)
+                extra_B = extra_B.next      
+            arr4 = arr4[::-1]         
+
+            arr = arr1 + arr2 + arr3 + arr4
+
+        else:
+            arr1 = []
+            extra_S = self.extra_S
+            while True:
+                if extra_S is None:
+                    break
+                arr1.append(extra_S.value)
+                extra_S = extra_S.next    
+            arr1 = arr1[::-1]
+
+            arr2 = []
+            S = self.S_origin
+            while True:
+                if S.get() is None:
+                    break
+                arr2.append(S.get().value)
+                S = S.next()             
+            arr2 = arr2[::-1]
+
+            arr3 = []
+            B = self.B_origin
+            while True:
+                if B.get() is None:
+                    break
+                arr3.append(B.get().value)
+                B = B.next() 
+
+
+            arr4 = []
+            extra_B = self.extra_B
+            while True:
+                if extra_B is None:
+                    break
+                arr4.append(extra_B.value)
+                extra_B = extra_B.next      
+      
+
+            arr = arr4 + arr3 + arr2 + arr1
+
+        return "{} state: {}".format(arr, self.state)    

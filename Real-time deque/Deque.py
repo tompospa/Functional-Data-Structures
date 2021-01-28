@@ -1,6 +1,7 @@
 from RealTimeDeque import Deque_0, Deque_1, Deque_2, Deque_3
 from Element import Element
 from Stack import Stack, stack_to_array
+from SimpleDeque import SimpleDeque, pop_left_simple, pop_right_simple, push_left_simple, push_right_simple
 
 def push_left(value, dq):
     if dq.state == 0:
@@ -12,6 +13,11 @@ def push_left(value, dq):
     if dq.state == 2 or dq.state == 3:
         return push_left_transfer(value, dq)
 
+    #pro testovani
+    if dq.state == 4:
+        return push_left_simple(value,dq)
+
+
 def push_right(value, dq):
     if dq.state == 0:
         return push_right_0(value, dq)
@@ -21,6 +27,10 @@ def push_right(value, dq):
 
     if dq.state == 2 or dq.state == 3:
         return push_right_transfer(value, dq)
+
+    #pro testovani
+    if dq.state == 4:
+        return push_right_simple(value,dq)        
 
 def pop_left(dq):
     if dq.state == 0:
@@ -32,6 +42,10 @@ def pop_left(dq):
     if dq.state == 2 or dq.state == 3:
         return pop_left_transfer(dq)        
 
+    #pro testovani
+    if dq.state == 4:
+        return pop_left_simple(dq)
+
 def pop_right(dq):
     if dq.state == 0:
         return pop_right_0(dq)
@@ -40,7 +54,11 @@ def pop_right(dq):
         return pop_right_1(dq)     
 
     if dq.state == 2 or dq.state == 3:
-        return pop_right_transfer(dq)           
+        return pop_right_transfer(dq)        
+
+    #pro testovani
+    if dq.state == 4:
+        return pop_right_simple(dq)       
 
 
 
@@ -68,7 +86,7 @@ def push_left_0(value, dq):
 
     if len(n_dq_list) == 4:
         LHS = Stack( Element(n_dq_list[0], Element(n_dq_list[1], None)), None )
-        RHS = Stack( Element(n_dq_list[2], Element(n_dq_list[2], None)), None )
+        RHS = Stack( Element(n_dq_list[3], Element(n_dq_list[2], None)), None )
 
         return Deque_1(LHS, RHS, 2, 2)
 
@@ -129,7 +147,7 @@ def push_left_1(value, dq):
         # Small je RHS a Big je LHS
         print("prechod 2")
 
-        k = n_length%3
+        k = n_length-3*dq.RHS_length
         counter = 2*dq.RHS_length + k - 1
         n_dq = Deque_2(False, dq.RHS, n_LHS, dq.RHS, n_LHS, None, None, None, None, 0, 0, 0, 0, counter)
         for x in range(6):
@@ -156,7 +174,7 @@ def push_right_1(value, dq):
         # Small je LHS a Big je RHS
         print("prechod 2")
 
-        k = n_length%3
+        k = n_length-3*dq.LHS_length
         counter = 2*dq.LHS_length + k - 1
         n_dq = Deque_2(True, dq.LHS, n_RHS, dq.LHS, n_RHS, None, None, None, None, 0, 0, 0, 0, counter)
         for x in range(6):
@@ -184,10 +202,11 @@ def pop_left_1(dq):
             return value, Deque_0(arr)
         # prechod do 2 
         # Small je LHS a Big je RHS
-        print("prechod 2")
+        print("prechod 2 pop left 1")
 
-        k = dq.RHS_length%3
+        k = dq.RHS_length-3*n_length
         counter = 2*n_length + k - 1
+        print("{} {} {}".format(n_length, dq.RHS_length, counter))
         n_dq = Deque_2(True, n_LHS, dq.RHS, n_LHS, dq.RHS, None, None, None, None, 0, 0, 0, 0, counter)
         for x in range(6):
             n_dq = do_steps(n_dq)
@@ -216,7 +235,7 @@ def pop_right_1(dq):
         # Small je RHS a Big je LHS   
         print("prechod 2")
 
-        k = dq.LHS_length%3
+        k = dq.LHS_length-3*n_length
         counter = 2*n_length + k - 1
         n_dq = Deque_2(False, n_RHS, dq.LHS, n_RHS, dq.LHS, None, None, None, None, 0, 0, 0, 0, counter) 
         for x in range(6):
