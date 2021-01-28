@@ -319,6 +319,8 @@ def pop_left_transfer(dq):
     if dq.state == 3:
         n_new_S = dq.new_S
         n_S_size = dq.S_size    
+        n_new_B = dq.new_B
+        n_B_size = dq.B_size            
     
     if dq.side:
         if dq.extra_S is None:
@@ -336,9 +338,14 @@ def pop_left_transfer(dq):
             n_extra_S_size = dq.extra_S_size - 1 
     else:
         if dq.extra_B is None:
-            value = dq.B_origin.get().value
-            n_B_origin = dq.B_origin.next()
-            n_copy_B = dq.copy_B - 1          
+            if dq.copy_B == 0 and dq.state==3:
+                value = dq.new_B.value
+                n_new_B = dq.new_B.next
+                n_B_size = dq.B_size - 1
+            else:                
+                value = dq.B_origin.get().value
+                n_B_origin = dq.B_origin.next()
+                n_copy_B = dq.copy_B - 1          
         else:   
             value = dq.extra_B.value
             n_extra_B = dq.extra_B.next
@@ -347,7 +354,7 @@ def pop_left_transfer(dq):
     if dq.state == 2:
         n_dq = Deque_2(dq.side, dq.S, dq.B, n_S_origin, n_B_origin, dq.aux_S, dq.aux_B, n_extra_S, n_extra_B, n_copy_S, n_copy_B, n_extra_S_size, n_extra_B_size, dq.aux_counter)
     if dq.state == 3:
-        n_dq = Deque_3(dq.side, dq.B, n_S_origin, n_B_origin, dq.aux_S, dq.aux_B, n_extra_S, n_extra_B, n_copy_S, n_copy_B, n_extra_S_size, n_extra_B_size, n_new_S, dq.new_B, n_S_size, dq.B_size)   
+        n_dq = Deque_3(dq.side, dq.B, n_S_origin, n_B_origin, dq.aux_S, dq.aux_B, n_extra_S, n_extra_B, n_copy_S, n_copy_B, n_extra_S_size, n_extra_B_size, n_new_S, n_new_B, n_S_size, n_B_size)   
 
     for x in range(4):
         n_dq = do_steps(n_dq)
@@ -371,7 +378,9 @@ def pop_right_transfer(dq):
 
     if dq.state == 3:
         n_new_S = dq.new_S
-        n_S_size = dq.S_size    
+        n_S_size = dq.S_size   
+        n_new_B = dq.new_B
+        n_B_size = dq.B_size            
     
     if not dq.side:
         if dq.extra_S is None:
@@ -389,9 +398,14 @@ def pop_right_transfer(dq):
             n_extra_S_size = dq.extra_S_size - 1 
     else:
         if dq.extra_B is None:
-            value = dq.B_origin.get().value
-            n_B_origin = dq.B_origin.next()
-            n_copy_B = dq.copy_B - 1     
+            if dq.copy_B == 0 and dq.state==3:
+                value = dq.new_B.value
+                n_new_B = dq.new_B.next
+                n_B_size = dq.B_size - 1
+            else:                
+                value = dq.B_origin.get().value
+                n_B_origin = dq.B_origin.next()
+                n_copy_B = dq.copy_B - 1   
         else:        
             value = dq.extra_B.value
             n_extra_B = dq.extra_B.next
@@ -400,7 +414,7 @@ def pop_right_transfer(dq):
     if dq.state == 2:
         n_dq = Deque_2(dq.side, dq.S, dq.B, n_S_origin, n_B_origin, dq.aux_S, dq.aux_B, n_extra_S, n_extra_B, n_copy_S, n_copy_B, n_extra_S_size, n_extra_B_size, dq.aux_counter)
     if dq.state == 3:
-        n_dq = Deque_3(dq.side, dq.B, n_S_origin, n_B_origin, dq.aux_S, dq.aux_B, n_extra_S, n_extra_B, n_copy_S, n_copy_B, n_extra_S_size, n_extra_B_size, n_new_S, dq.new_B, n_S_size, dq.B_size)   
+        n_dq = Deque_3(dq.side, dq.B, n_S_origin, n_B_origin, dq.aux_S, dq.aux_B, n_extra_S, n_extra_B, n_copy_S, n_copy_B, n_extra_S_size, n_extra_B_size, n_new_S, n_new_B, n_S_size, n_B_size)   
 
     for x in range(4):
         n_dq = do_steps(n_dq)
