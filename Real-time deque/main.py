@@ -51,7 +51,7 @@ print(x2.RHS_length)
 v, x2 = pop_left(x2)
 print(x2)
 
-print(mytest.check_realtimeDQ(RTDQ,SDQ,10000))
+print(mytest.check_realtimeDQ(RTDQ,SDQ,100000))
 
 #mytest.deque_1_test()
 

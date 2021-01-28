@@ -145,7 +145,7 @@ def push_left_1(value, dq):
     if (3*dq.RHS_length) < n_length:
         # prechod do 2 
         # Small je RHS a Big je LHS
-        print("prechod 2")
+        #print("prechod 2")
 
         k = n_length-3*dq.RHS_length
         counter = 2*dq.RHS_length + k - 1
@@ -172,7 +172,7 @@ def push_right_1(value, dq):
     if (3*dq.LHS_length) < n_length:
         # prechod do 2 
         # Small je LHS a Big je RHS
-        print("prechod 2")
+        #print("prechod 2")
 
         k = n_length-3*dq.LHS_length
         counter = 2*dq.LHS_length + k - 1
@@ -202,11 +202,11 @@ def pop_left_1(dq):
             return value, Deque_0(arr)
         # prechod do 2 
         # Small je LHS a Big je RHS
-        print("prechod 2 pop left 1")
+        #print("prechod 2 pop left 1")
 
         k = dq.RHS_length-3*n_length
         counter = 2*n_length + k - 1
-        print("{} {} {}".format(n_length, dq.RHS_length, counter))
+        #print("{} {} {}".format(n_length, dq.RHS_length, counter))
         n_dq = Deque_2(True, n_LHS, dq.RHS, n_LHS, dq.RHS, None, None, None, None, 0, 0, 0, 0, counter)
         for x in range(6):
             n_dq = do_steps(n_dq)
@@ -233,7 +233,7 @@ def pop_right_1(dq):
             return value, Deque_0(stack_to_array(dq.LHS))            
         # prechod do 2 
         # Small je RHS a Big je LHS   
-        print("prechod 2")
+        #print("prechod 2")
 
         k = dq.LHS_length-3*n_length
         counter = 2*n_length + k - 1
@@ -476,8 +476,8 @@ def do_steps(dq):
             n_new_S = Element(dq.B.get().value, dq.new_S)
             n_S_size = dq.S_size + 1
             n_B = dq.B.next()
-        print("copy s "+str(n_copy_S))
-        print(n_copy_B)
+        #print("copy s "+str(n_copy_S))
+        #print(n_copy_B)
         if n_copy_S == 0 and n_copy_B == 0:
             LHS = Stack(dq.extra_S, n_new_S)
             RHS = Stack(dq.extra_B, n_new_B)
