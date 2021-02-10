@@ -2,7 +2,7 @@ from RealTimeDeque import Deque_0
 from Deque import *
 from tests import MyTests
 from SimpleDeque import SimpleDeque, pop_left_simple, pop_right_simple, push_left_simple, push_right_simple
-
+''''
 x = new()
 print(x)
 
@@ -49,9 +49,15 @@ print(x2)
 print(x2.LHS_length)
 print(x2.RHS_length)
 v, x2 = pop_left(x2)
-print(x2)
+print(x2)'''
 
-print(mytest.check_realtimeDQ(RTDQ,SDQ,100000))
+mytest = MyTests()
+SDQ = SimpleDeque()
+RTDQ = new()
+for x in range(100):
+    RTDQ = push_right(x, RTDQ)
+
+print(mytest.check_realtimeDQ(RTDQ,SDQ,1000000))
 
 #mytest.deque_1_test()
 

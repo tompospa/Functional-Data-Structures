@@ -4,6 +4,8 @@ from RealTimeDeque import Deque_0, Deque_1
 from Deque import push_left, push_right, pop_left, pop_right
 import random
 import copy
+from time import gmtime, strftime, time
+import time
 
 class MyTests():
     
@@ -22,52 +24,61 @@ class MyTests():
             operations.append(choice)
             if choice == 1 or choice == 2:
                 values.append(random.randint(0,50))    
-
+        i = 0
         #samotné testování
+
+        print(strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime()))
+        time0 = int(time.time()*1000)
         for x in operations:
+
+            #print(i)
+            i+=1
             if x == 1:#push left
                 real_time_deque = push_left(values[0], real_time_deque)
-                simple_deque = push_left(values[0], simple_deque)
+                #simple_deque = push_left(values[0], simple_deque)
                 values.pop(0)
                 #print(real_time_deque)
                 #print(simple_deque.list)                   
             if x == 2:#push right
                 real_time_deque = push_right(values[0], real_time_deque)
-                simple_deque = push_right(values[0], simple_deque)
+                #simple_deque = push_right(values[0], simple_deque)
                 #print(real_time_deque)
                 #print(simple_deque.list)                   
                 values.pop(0)        
             if x == 3:#pop left
     
                 pom1 = real_time_deque
-                pom2 = copy.deepcopy(simple_deque)
+                #pom2 = copy.deepcopy(simple_deque)
                 v1, real_time_deque = pop_left(real_time_deque)
-                v2, simple_deque = pop_left(simple_deque)
+                #v2, simple_deque = pop_left(simple_deque)
                 #print(real_time_deque)
                 #print(simple_deque.list)                  
-                if v1 != v2:
+                #if v1 != v2:
                     #print("pred realtime: {} ".format(pom1))
                     #print("pred simple: {} ".format(pom2.list))
                     #print("rt vraci: {} simple vraci: {}".format(v1,v2))
                     #print(real_time_deque)
                     #print(simple_deque.list)                    
-                    return False        
+                    #return False        
             if x == 4:#pop right
         
                 pom1 = real_time_deque
-                pom2 = copy.deepcopy(simple_deque)                
+                #pom2 = copy.deepcopy(simple_deque)                
                 v1, real_time_deque = pop_right(real_time_deque)
-                v2, simple_deque = pop_right(simple_deque)
+                #v2, simple_deque = pop_right(simple_deque)
                 #print(real_time_deque)
                 #print(simple_deque.list)                  
-                if v1 != v2:
+                #if v1 != v2:
                     #print("pred realtime: {} ".format(pom1))
                     #print("pred simple: {} ".format(pom2.list))                    
                     #print("rt {} simple {}".format(v1,v2))
                     #print(real_time_deque)
                     #print(simple_deque.list)
-                    return False                     
+                    #return False                     
+        print(strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime()))
+        time1 = int(time.time()*1000)
 
+        print(time1-time0)
         return True
 
     def stack_test(self):
