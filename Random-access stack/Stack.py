@@ -54,6 +54,21 @@ def FIND(s, k):
             if pom.index == k:
                 return pom.value
             
+def POP_MULTI(s, k):
+    if s.top.index == k:
+        return Stack(s.top)
+    if s.top.index < k:
+        return None#vyjímka    
+    pom = s.top
+    while(True):
+        if pom.jump.index>=k:
+            pom = pom.jump
+            if pom.index == k:
+                return Stack(pom)
+        else:
+            pom = pom.next
+            if pom.index == k:
+                return Stack(pom)    
         
 
 
