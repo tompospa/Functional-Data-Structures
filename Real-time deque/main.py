@@ -57,7 +57,7 @@ RTDQ = new()
 for x in range(100):
     RTDQ = push_right(x, RTDQ)
 
-print(mytest.check_realtimeDQ(RTDQ,SDQ,1000000))
+print(mytest.check_realtimeDQ(RTDQ,SDQ,500000))
 
 #mytest.deque_1_test()
 
