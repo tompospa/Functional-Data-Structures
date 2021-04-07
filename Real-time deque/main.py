@@ -54,10 +54,13 @@ print(x2)'''
 mytest = MyTests()
 SDQ = SimpleDeque()
 RTDQ = new()
-for x in range(100):
-    RTDQ = push_right(x, RTDQ)
 
-print(mytest.check_realtimeDQ(RTDQ,SDQ,500000))
+
+print('validity')
+print(mytest.check_realtimeDQ_validity(RTDQ,SDQ,10000))
+
+
+
 
 #mytest.deque_1_test()
 
