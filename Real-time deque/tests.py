@@ -25,18 +25,19 @@ class MyTests():
             if choice == 1 or choice == 2:
                 values.append(random.randint(0,50))    
         #samotné testování
+        values_i = 0
 
         for x in operations:
 
             if x == 1:#push left
-                real_time_deque = push_left(values[0], real_time_deque)
-                simple_deque = push_left(values[0], simple_deque)
-                values.pop()
+                real_time_deque = push_left(values[values_i], real_time_deque)
+                simple_deque = push_left(values[values_i], simple_deque)
+                values_i +=1
                  
             if x == 2:#push right
-                real_time_deque = push_right(values[0], real_time_deque)
-                simple_deque = push_right(values[0], simple_deque)
-                values.pop()  
+                real_time_deque = push_right(values[values_i], real_time_deque)
+                simple_deque = push_right(values[values_i], simple_deque)
+                values_i +=1
 
             if x == 3:#pop left
 
@@ -69,7 +70,7 @@ class MyTests():
             operations.append(choice)
             if choice == 1 or choice == 2:
                 values.append(random.randint(0,50))    
-        i = 0
+        values_i = 0
         #samotné testování
 
         print(strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime()))
@@ -77,12 +78,13 @@ class MyTests():
         for x in operations:
 
             if x == 1:#push left
-                real_time_deque = push_left(values[0], real_time_deque)
-                values.pop()
+                real_time_deque = push_left(values[values_i], real_time_deque)
+                values_i +=1
                 
             if x == 2:#push right
-                real_time_deque = push_right(values[0], real_time_deque)                 
-                values.pop()        
+                real_time_deque = push_right(values[values_i], real_time_deque)                 
+                values_i +=1
+                
             if x == 3:#pop left
 
                 v1, real_time_deque = pop_left(real_time_deque)
