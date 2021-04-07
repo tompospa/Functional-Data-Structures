@@ -1,3 +1,5 @@
+from Element import Element
+
 class Stack(object):
 
     def __init__(self, top):
@@ -6,7 +8,7 @@ class Stack(object):
     def __str__(self):
         return "top: {}".format(self.top)
 
-def NEW(s):
+def NEW():
     return Stack(Element(None, 0, None, None))
 
 def EMPTY(s):
@@ -22,12 +24,17 @@ def POP(s):
     return s.top.value, Stack(s.next)
 
 def PUSH(s, x):
+    if EMPTY(s):
+        n_top = Element(x, s.top.index+1, s.top, s.top)
+        return Stack(n_top)
     
     jump1 = s.top.jump
     jump2 = jump1.jump
     n_jump = None
 
-    if jump1.index-s.top.index == jump2.index-jump1.index:
+    if jump2 is None:#pouze jeden prvek ve stacku
+        n_jump = s.top
+    elif jump1.index-s.top.index == jump2.index-jump1.index:
         n_jump = jump2
     else:
         n_jump = s.top
