@@ -7,6 +7,8 @@ from RealTimeQueue import QueueZero, enqueue_zero, dequeue_zero, QueueOne, enque
 import random
 from queue_to_array import *
 import copy
+from time import gmtime, strftime, time
+import time
 
 
 def make_random_operations_array(min, max):
@@ -48,26 +50,39 @@ def check_realtimeQ(real_time_queue, simple_queue, number_of_operation_for_testi
         if choice:
             values.append(random.randint(0,50))    
 
+    #print(strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime()))
+    time0 = int(time.time()*1000)
     #samotné testování
     for x in operations:
         if x:
             real_time_queue = enqueue(real_time_queue, values[0])
-            simple_queue = enqueue(simple_queue, values[0])
+            #simple_queue = enqueue(simple_queue, values[0])
             values.pop()
+            
         else:
             v1, real_time_queue = dequeue(real_time_queue)
-            v2, simple_queue = dequeue(simple_queue)
-            if v1 != v2:
-                return False
+            
+            #v2, simple_queue = dequeue(simple_queue)
+            #if v1 != v2:
+                #return False
 
-    return True
+    #print(strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime()))
+    time1 = int(time.time()*1000)
+
+    print('time: {}'.format(time1-time0))
+    return True 
 
  
 
 if __name__ == '__main__':
 
-    print(check_realtimeQ( get_empty_queue() , SimpleQueue(), 1000000) ) #vstupy jsou prázdné fronty jedna Realtimequeue a druhí Simplequeue a poslední argument je počet operací, které budou nad frontou provedeny
-
+    print(check_realtimeQ( get_empty_queue() , SimpleQueue(), 625000) ) #vstupy jsou prázdné fronty jedna Realtimequeue a druhí Simplequeue a poslední argument je počet operací, které budou nad frontou provedeny
+    print(check_realtimeQ( get_empty_queue() , SimpleQueue(), 1250000) )
+    print(check_realtimeQ( get_empty_queue() , SimpleQueue(), 2500000) )
+    print(check_realtimeQ( get_empty_queue() , SimpleQueue(), 5000000) )
+    print(check_realtimeQ( get_empty_queue() , SimpleQueue(), 10000000) )
+    print(check_realtimeQ( get_empty_queue() , SimpleQueue(), 20000000) )
+    print(check_realtimeQ( get_empty_queue() , SimpleQueue(), 40000000) )
 
     #testování queue přes rovnost každáho prvku
     '''

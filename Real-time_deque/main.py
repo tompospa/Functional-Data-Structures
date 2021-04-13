@@ -56,8 +56,16 @@ SDQ = SimpleDeque()
 RTDQ = new()
 
 
-print('validity')
-print(mytest.check_realtimeDQ_validity(RTDQ,SDQ,10000))
+#print('validity')
+#print(mytest.check_realtimeDQ_validity(RTDQ,SDQ,100000))
+
+print(mytest.check_realtimeDQ_time(RTDQ,SDQ,625000))
+print(mytest.check_realtimeDQ_time(RTDQ,SDQ,1250000))
+print(mytest.check_realtimeDQ_time(RTDQ,SDQ,2500000))
+print(mytest.check_realtimeDQ_time(RTDQ,SDQ,5000000))
+print(mytest.check_realtimeDQ_time(RTDQ,SDQ,10000000))
+print(mytest.check_realtimeDQ_time(RTDQ,SDQ,20000000))
+print(mytest.check_realtimeDQ_time(RTDQ,SDQ,40000000))
 
 
 
