@@ -7,8 +7,8 @@ import copy
 class QueueZero(object):
 
     def __init__(self, head, tail, lendiff):
-        self.head = head
-        self.tail = tail
+        self.head = head #první část fronty
+        self.tail = tail #druhá část fronty
         self.lendiff = lendiff #  = |head| - |tail|
         self.state = 0
 
@@ -45,14 +45,14 @@ def dequeue_zero(q):
 class QueueOne(object):
 
     def __init__(self, head_origin, head, tail, head_reversed, n_head, n_tail, lendiff, delta_for_copy):
-        self.head_origin = head_origin
-        self.head = head
-        self.tail = tail
-        self.head_reversed = head_reversed
+        self.head_origin = head_origin # seznam pro odebírání prvků
+        self.head = head # seznam pro přetáčení
+        self.tail = tail 
+        self.head_reversed = head_reversed 
         self.n_head = n_head
         self.n_tail = n_tail
         self.lendiff = lendiff
-        self.delta_for_copy = delta_for_copy
+        self.delta_for_copy = delta_for_copy # counter - počet ¨živých¨ prvků na head_reversed
         self.state = 1
 
     def __str__(self):
@@ -65,7 +65,7 @@ def enqueue_one(q, value):
 
     # přechod ze stavu 0 do stavu 1
     if q.lendiff == 0:
-        n_head = Element(value, None)
+        n_head = Element(value, None) # prvek se rovnou přidá na n_head - simulace jednoho kroku přetáčení
 
         head_reversed = None
         delta_for_copy = 0
@@ -75,7 +75,7 @@ def enqueue_one(q, value):
             head = q.head.next
             delta_for_copy = 1
 
-        if head is None and q.tail is None:
+        if head is None and q.tail is None: #krajní případ kdy se do prazdné fronty pridava prvni prvek
             return QueueZero(n_head,None,1)
 
 
@@ -122,7 +122,6 @@ def dequeue_one(q):
     # přechod ze stavu 0 do stavu 1
     if q.lendiff == 0:
         
-        #q.head_origin.value#vracet
         head_origin = q.head_origin.next
 
         if head_origin == None and q.tail == None:
@@ -185,12 +184,12 @@ def dequeue_one(q):
 class QueueTwo(object):
     
     def __init__(self, head_origin, head_reversed, n_head, n_tail, lendiff, delta_for_copy):
-        self.head_origin = head_origin
+        self.head_origin = head_origin # seznam pro odebírání prvků
         self.head_reversed = head_reversed
         self.n_head = n_head
         self.n_tail = n_tail
         self.lendiff = lendiff
-        self.delta_for_copy = delta_for_copy
+        self.delta_for_copy = delta_for_copy # zbývající počet prvků pro napojení 
         self.state = 2
 
     def __str__(self):
