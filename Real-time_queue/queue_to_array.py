@@ -100,7 +100,7 @@ def q_2_to_array(q):#
             break
         n_tail = n_tail.next      
 
-    #z head_origin vzit #copy prvku pakvsechny z n_head a vsechy y reverse n_tail
+    #z head_origin vzit #copy prvku pak vsechny z n_head a vsechy y reverse n_tail
 
     return queue_arr       
 

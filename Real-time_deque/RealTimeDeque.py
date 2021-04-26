@@ -49,7 +49,7 @@ class Deque_2(object):
 
     def __init__(self, side, S, B, S_origin, B_origin, aux_S, aux_B, extra_S, extra_B, copy_S, copy_B, extra_S_size, extra_B_size, aux_counter):
 
-        self.side = side# True znameba S - B False znamena B - S
+        self.side = side# True znamená S - B False znamená B - S
         self.S = S
         self.B = B
         self.S_origin = S_origin

@@ -1,4 +1,4 @@
-from RealTimeDeque import Deque_0, Deque_1, Deque_2, Deque_3
+ from RealTimeDeque import Deque_0, Deque_1, Deque_2, Deque_3
 from Element import Element
 from Stack import Stack, stack_to_array
 from SimpleDeque import SimpleDeque, pop_left_simple, pop_right_simple, push_left_simple, push_right_simple

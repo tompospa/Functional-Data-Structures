@@ -6,7 +6,14 @@ class Stack(object):
         self.top = top
 
     def __str__(self):
-        return "top: {}".format(self.top)
+        stack_str = ""
+        pom = self.top
+        while(True):
+            stack_str += str(pom.value) + "->"
+            if pom.next is None:
+                break 
+            pom = pom.next 
+        return "stack: {}".format(stack_str)
 
 def NEW():
     return Stack(Element(None, 0, None, None))
@@ -21,7 +28,7 @@ def TOP(s):
     return s.top
 
 def POP(s):
-    return s.top.value, Stack(s.next)
+    return s.top.value, Stack(s.top.next)
 
 def PUSH(s, x):
     if EMPTY(s):
@@ -49,7 +56,7 @@ def FIND(s, k):
     if s.top.index == k:
         return s.top.value
     if s.top.index < k:
-        return None#vyjímka
+        return None#vyjímka ve stacku je mene nez k prvku
     pom = s.top
     while(True):
         if pom.jump.index>=k:
@@ -65,7 +72,7 @@ def POP_MULTI(s, k):
     if s.top.index == k:
         return Stack(s.top)
     if s.top.index < k:
-        return None#vyjímka    
+        return None#vyjímka ve stacku je mene nez k prvku    
     pom = s.top
     while(True):
         if pom.jump.index>=k:
