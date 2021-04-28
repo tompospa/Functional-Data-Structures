@@ -171,8 +171,6 @@ class Deque_3(object):
         self.new_B = new_B
         self.S_size = S_size
         self.B_size = B_size
-        
-        
         self.state = 3
 
     def __str__(self):
