@@ -1,4 +1,4 @@
- from RealTimeDeque import Deque_0, Deque_1, Deque_2, Deque_3
+from RealTimeDeque import Deque_0, Deque_1, Deque_2, Deque_3
 from Element import Element
 from Stack import Stack, stack_to_array
 from SimpleDeque import SimpleDeque, pop_left_simple, pop_right_simple, push_left_simple, push_right_simple
@@ -73,6 +73,8 @@ def is_empty(q):
             return True
         return False
     return False 
+
+
 
 # deque_0 operations
 #---------------------------------------------------------------------
@@ -334,7 +336,7 @@ def pop_left_transfer(dq):
                 n_copy_S = dq.copy_S - 1 
         else:
             value = dq.extra_S.value
-            n_extra_S = dq.extra_S.next
+            n_extra_S = dq.extra_S.next 
             n_extra_S_size = dq.extra_S_size - 1 
     else:
         if dq.extra_B is None:

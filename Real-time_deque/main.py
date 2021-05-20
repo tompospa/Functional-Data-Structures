@@ -2,7 +2,28 @@ from RealTimeDeque import Deque_0
 from Deque import *
 from tests import MyTests
 from SimpleDeque import SimpleDeque, pop_left_simple, pop_right_simple, push_left_simple, push_right_simple
+
+
+def test_cas():
+    pocet_operaci = [625000,1250000,2500000,5000000,10000000,20000000,40000000] 
+
+    for x in pocet_operaci:
+
+        mytest = MyTests()
+        SDQ = SimpleDeque()
+        RTDQ = new()
+        print("počet operací: {} {} ".format(x, mytest.check_realtimeDQ_time(RTDQ,SDQ,x)))
+
+
+#print('validity')
+#print(mytest.check_realtimeDQ_validity(RTDQ,SDQ,100000))
+
+
 ''''
+
+
+
+
 x = new()
 print(x)
 
@@ -49,7 +70,8 @@ print(x2)
 print(x2.LHS_length)
 print(x2.RHS_length)
 v, x2 = pop_left(x2)
-print(x2)'''
+print(x2)
+
 
 mytest = MyTests()
 SDQ = SimpleDeque()
@@ -66,7 +88,10 @@ print(mytest.check_realtimeDQ_time(RTDQ,SDQ,5000000))
 print(mytest.check_realtimeDQ_time(RTDQ,SDQ,10000000))
 print(mytest.check_realtimeDQ_time(RTDQ,SDQ,20000000))
 print(mytest.check_realtimeDQ_time(RTDQ,SDQ,40000000))
+'''
 
+
+test_cas()
 
 
 

@@ -73,7 +73,7 @@ class MyTests():
         values_i = 0
         #samotné testování
 
-        print(strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime()))
+        #print(strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime()))
         time0 = int(time.time()*1000)
         for x in operations:
 
@@ -93,7 +93,7 @@ class MyTests():
                       
                 v1, real_time_deque = pop_right(real_time_deque)
                    
-        print(strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime()))
+        #print(strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime()))
         time1 = int(time.time()*1000)
 
         print('time: {}'.format(time1-time0))
